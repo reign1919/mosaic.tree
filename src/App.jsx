@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FileText, Instagram, Mail } from 'lucide-react';
+import { FileText, Instagram, Mail, Briefcase } from 'lucide-react';
 import CursorTrail from './components/CursorTrail';
 
 import MosaicDivider from './components/MosaicDivider';
@@ -79,6 +79,17 @@ export default function App() {
               <FileText size={20} />
               Brochure
               <div className="tape tape-tl"></div>
+            </a>
+
+            <a 
+              href="https://apply-for-mosaic.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn link-card card-outline card-yellow"
+            >
+              <Briefcase size={20} />
+              Work with us
+              <div className="tape tape-br"></div>
             </a>
 
             <a 

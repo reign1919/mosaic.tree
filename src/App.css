@@ -150,6 +150,16 @@
   box-shadow: 6px 6px 0px var(--c6);
 }
 
+.card-yellow {
+  border-color: var(--c7);
+}
+.card-yellow:hover {
+  background: color-mix(in srgb, var(--c5) 10%, var(--surface));
+  border-color: var(--c5);
+  color: var(--c5);
+  box-shadow: 6px 6px 0px var(--c5);
+}
+
 /* Fix Tape z-index so it doesn't block clicks */
 .link-card .tape {
   z-index: 5;
