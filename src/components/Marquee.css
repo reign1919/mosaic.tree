@@ -1,0 +1,73 @@
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%); /* Full bleed trick */
+  background: var(--surface2);
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  padding: 12px 0;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.marquee-track {
+  display: inline-flex;
+  animation: marquee var(--duration, 40s) linear infinite;
+}
+
+.marquee-container.reverse .marquee-track {
+  animation-direction: reverse;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  /* Gradient text */
+  background: linear-gradient(90deg, var(--c5), var(--c6), var(--c3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding: 0 20px;
+  transition: transform 0.2s var(--spring), filter 0.2s;
+  cursor: default;
+}
+
+.marquee-item:hover {
+  transform: scaleY(1.15) skewX(-5deg);
+  filter: drop-shadow(0 0 8px rgba(255, 225, 77, 0.4));
+}
+
+.marquee-separator {
+  margin-left: 40px;
+  color: var(--c1); /* Hot Pink */
+  -webkit-text-fill-color: var(--c1);
+  font-size: 16px;
+  display: inline-block;
+  animation: spin 5s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation-play-state: paused;
+  }
+  .marquee-separator {
+    animation: none;
+  }
+}

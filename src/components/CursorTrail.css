@@ -1,0 +1,114 @@
+/* ─── CursorTrail ─── */
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.25s var(--spring), height 0.25s var(--spring),
+              border-radius 0.25s var(--spring), border-color 0.2s,
+              background 0.2s;
+  will-change: transform;
+  box-shadow: 0 0 12px rgba(255, 45, 123, 0.2);
+}
+
+.cursor-ring.on-link {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  border-color: var(--c6);
+  transform-origin: center;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  /* Diamond rotation is already applied via JS translate, so we rotate here */
+}
+
+.cursor-ring.pressed {
+  width: 20px;
+  height: 20px;
+  border-color: var(--c2);
+  box-shadow: 0 0 16px rgba(255, 107, 53, 0.4);
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 100000;
+  will-change: transform;
+  transition: width 0.2s, height 0.2s, background 0.2s;
+}
+
+.cursor-dot.on-link {
+  width: 8px;
+  height: 8px;
+  background: var(--c6);
+}
+
+.cursor-dot.pressed {
+  width: 10px;
+  height: 10px;
+  background: var(--c2);
+}
+
+.cursor-tile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  pointer-events: none;
+  will-change: transform;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ─── Click Sparkles ─── */
+.sparkle-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100001;
+}
+
+.cursor-sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparkleBurst 0.6s ease-out forwards;
+}
+
+@keyframes sparkleBurst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ─── Hide all cursor stuff on non-desktop ─── */
+@media (pointer: coarse), (hover: none) {
+  .cursor-ring,
+  .cursor-dot,
+  .cursor-tile,
+  .sparkle-container {
+    display: none !important;
+  }
+  * {
+    cursor: auto !important;
+  }
+}

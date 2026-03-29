@@ -1,0 +1,344 @@
+/* ═══════════════════════════════════════════════════════
+   THE MOSAIC FOUNDATION — LINKTREE PAGE
+   Global Design System (Dark Mode Only)
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Google Fonts Import (fallback if preconnect fails) ─── */
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Outfit:wght@400;600;700;800&family=Shadows+Into+Light+Two&display=swap');
+
+/* ─── Design Tokens ─── */
+:root {
+  /* Dark mode palette (always active) */
+  --bg:       #0a0418;
+  --bg2:      #120824;
+  --bg3:      #1a0e30;
+  --surface:  #150a28;
+  --surface2: #1e1035;
+  --surface3: #261442;
+  --text:     #f0e8ff;
+  --text2:    #c8b0e8;
+  --text3:    #8b6aaa;
+
+  /* Borders */
+  --border:  rgba(180, 120, 255, 0.12);
+  --border2: rgba(180, 120, 255, 0.25);
+
+  /* Maximalist Accent Colors (10-color system) */
+  --c1:  #ff2d7b;  /* Hot Pink */
+  --c2:  #ff6b35;  /* Tangerine */
+  --c3:  #b8ff00;  /* Neon Lime */
+  --c4:  #6c2bd9;  /* Deep Violet */
+  --c5:  #ffe14d;  /* Sunshine Yellow */
+  --c6:  #00d4ff;  /* Cyan Electric */
+  --c7:  #f0e8ff;  /* Light text (was Ink Black-Violet in light mode) */
+  --c8:  #ff9ee7;  /* Bubblegum Pink */
+  --c9:  #7bffb2;  /* Mint Neon */
+  --c10: #ff4444;  /* Cherry Red */
+
+  /* Semantic */
+  --accent:  #ff2d7b;
+  --accent2: #b8ff00;
+
+  /* Shadows — Brutalist (dark mode adjusted) */
+  --shadow-brutal:        4px 4px 0px rgba(180, 0, 255, 0.35);
+  --shadow-brutal-sm:     2px 2px 0px rgba(180, 0, 255, 0.3);
+  --shadow-brutal-lg:     6px 6px 0px rgba(180, 0, 255, 0.4);
+  --shadow-brutal-accent: 4px 4px 0px var(--accent);
+
+  /* Radius */
+  --r:    12px;
+  --r-lg: 20px;
+
+  /* Transitions */
+  --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --spring:     0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Typography */
+  --font-display:    'Outfit', sans-serif;
+  --font-body:       'Epilogue', sans-serif;
+  --font-handwritten: 'Shadows Into Light Two', cursive;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ─── Paper Texture Overlay ─── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 99997;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg2);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--c1), var(--c4));
+  border-radius: 4px;
+  border: 2px solid var(--bg2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--c8), var(--c6));
+}
+
+/* ─── Cursor: hide system cursor on desktop ─── */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ─── Headings ─── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Handwritten ─── */
+.handwritten {
+  font-family: var(--font-handwritten);
+  font-weight: 700;
+}
+
+/* ─── Mono ─── */
+.mono {
+  font-family: var(--font-body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+/* ─── Links ─── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Ambient Background Glows ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 600px 400px at 20% 30%, rgba(108, 43, 217, 0.08), transparent),
+    radial-gradient(ellipse 500px 350px at 80% 60%, rgba(0, 212, 255, 0.06), transparent),
+    radial-gradient(ellipse 400px 300px at 50% 80%, rgba(255, 45, 123, 0.05), transparent);
+}
+
+/* ─── Tag Sticker ─── */
+.tag-glow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-handwritten);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 8px;
+  border: 1.5px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  box-shadow: var(--shadow-brutal-sm);
+  transform: rotate(-1deg);
+  transition: var(--spring);
+  white-space: nowrap;
+}
+.tag-glow::before {
+  content: '★';
+  display: inline-block;
+  animation: spin 4s linear infinite;
+  font-size: 11px;
+}
+.tag-glow:hover {
+  transform: rotate(1deg) scale(1.05);
+}
+
+/* ─── Spinning Star ─── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Button (Sticker Style) ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 2.5px solid var(--c7);
+  cursor: pointer;
+  transition: var(--spring);
+  text-decoration: none;
+  position: relative;
+  user-select: none;
+}
+.btn:hover {
+  transform: translate(-2px, -2px);
+}
+.btn:active {
+  transform: translate(1px, 1px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-brutal);
+}
+.btn-primary:hover {
+  box-shadow: var(--shadow-brutal-lg);
+}
+
+/* ─── Pill Tags ─── */
+.pill {
+  display: inline-block;
+  font-family: var(--font-handwritten);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border2);
+  box-shadow: var(--shadow-brutal-sm);
+  background: var(--surface2);
+  color: var(--text2);
+  transform: rotate(var(--rot, -1deg));
+  transition: var(--spring);
+}
+.pill:nth-child(even) { --rot: 1.5deg; }
+.pill:hover {
+  transform: rotate(0deg) scale(1.08);
+}
+
+/* ─── Tape Decorators ─── */
+.tape {
+  position: absolute;
+  width: 60px;
+  height: 20px;
+  background: rgba(255, 225, 77, 0.18);
+  border: 1px solid rgba(255, 225, 77, 0.25);
+  z-index: 2;
+  pointer-events: none;
+}
+.tape-tl {
+  top: -8px;
+  left: 14px;
+  transform: rotate(-8deg);
+}
+.tape-tr {
+  top: -8px;
+  right: 14px;
+  transform: rotate(12deg);
+}
+.tape-bl {
+  bottom: -8px;
+  left: 14px;
+  transform: rotate(5deg);
+}
+.tape-br {
+  bottom: -8px;
+  right: 14px;
+  transform: rotate(-6deg);
+}
+
+/* ─── Page Enter Animation ─── */
+@keyframes pageSlap {
+  0%   { opacity: 0; transform: scale(0.92) rotate(-1deg); }
+  60%  { opacity: 1; transform: scale(1.02) rotate(0.5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+.page-enter {
+  animation: pageSlap 0.6s var(--spring) both;
+}
+
+/* ─── Float Animation (for background tiles) ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50%      { transform: translateY(-18px) rotate(calc(var(--r, 0deg) + 5deg)); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translate(0, 0) rotate(var(--rot, 0deg)); }
+  25%      { transform: translate(8px, -12px) rotate(calc(var(--rot, 0deg) + 3deg)); }
+  50%      { transform: translate(-5px, -20px) rotate(calc(var(--rot, 0deg) - 2deg)); }
+  75%      { transform: translate(10px, -8px) rotate(calc(var(--rot, 0deg) + 4deg)); }
+}
+
+/* ─── Glow Pulse ─── */
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(255, 45, 123, 0.3)); }
+  50%      { filter: drop-shadow(0 0 24px rgba(255, 45, 123, 0.5)) drop-shadow(0 0 48px rgba(108, 43, 217, 0.2)); }
+}
+
+/* ─── Scrapbook Arrow ─── */
+.scrapbook-arrow {
+  font-family: var(--font-handwritten);
+  font-size: 15px;
+  color: var(--text3);
+  position: relative;
+  display: inline-block;
+  transform: rotate(var(--arrow-rot, -3deg));
+  transition: var(--spring);
+  white-space: nowrap;
+}
+.scrapbook-arrow:hover {
+  color: var(--accent);
+  transform: rotate(0deg) scale(1.05);
+}
+
+/* ─── Mosaic Divider Bar Bounce ─── */
+@keyframes dividerBounce {
+  0%, 100% { transform: scaleY(1); }
+  50%      { transform: scaleY(1.6); }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+  body { font-size: 14px; }
+}

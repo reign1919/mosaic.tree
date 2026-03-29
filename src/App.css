@@ -1,0 +1,173 @@
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── Background Floating Tiles ─── */
+.bg-tiles-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-tile {
+  position: absolute;
+  border-radius: 4px;
+  animation: floatSlow linear infinite;
+  box-shadow: var(--shadow-brutal-sm);
+  opacity: 0.8;
+}
+
+/* ─── Layout ─── */
+.linktree-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 10;
+}
+
+/* ─── Brand Section ─── */
+.brand-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.logo-wrapper {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: var(--surface2);
+  padding: 10px;
+  box-shadow: var(--shadow-brutal-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.logo-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2px dashed var(--border2);
+  pointer-events: none;
+  animation: spin 30s linear infinite;
+}
+
+.brand-logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+.brand-name {
+  font-size: 28px;
+  text-align: center;
+  margin: 10px 0 0;
+  text-shadow: 2px 2px 0 var(--bg), -2px -2px 0 var(--bg), 2px -2px 0 var(--bg), -2px 2px 0 var(--bg), 4px 4px 0 var(--c7);
+}
+
+.main-divider {
+  max-width: 80%;
+  margin: 30px auto;
+}
+
+/* ─── Links Section ─── */
+.links-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  position: relative;
+  margin-top: 10px;
+}
+
+.arrow-links {
+  position: absolute;
+  top: -36px;
+  right: 0;
+  font-size: 18px;
+  color: var(--c3); /* Neon Lime */
+}
+
+/* ─── Link Button Tweaks ─── */
+.link-card {
+  width: 100%;
+  font-size: 16px;
+  height: 60px;
+  padding: 0 20px;
+  justify-content: center;
+}
+
+/* Different Colors for Links */
+.card-pink {
+  background: var(--c1);
+  border-color: var(--c7);
+}
+.card-pink:hover {
+  box-shadow: 6px 6px 0px var(--c7);
+}
+
+.card-outline {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.card-lime {
+  border-color: var(--c7);
+}
+.card-lime:hover {
+  background: color-mix(in srgb, var(--c3) 10%, var(--surface));
+  border-color: var(--c3);
+  color: var(--c3);
+  box-shadow: 6px 6px 0px var(--c3);
+}
+
+.card-cyan {
+  border-color: var(--c7);
+}
+.card-cyan:hover {
+  background: color-mix(in srgb, var(--c6) 10%, var(--surface));
+  border-color: var(--c6);
+  color: var(--c6);
+  box-shadow: 6px 6px 0px var(--c6);
+}
+
+/* Fix Tape z-index so it doesn't block clicks */
+.link-card .tape {
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ─── Footer ─── */
+.footer-simple {
+  text-align: center;
+  padding: 20px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text3);
+  margin-top: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.bottom-marquee {
+  margin-top: auto;
+}
