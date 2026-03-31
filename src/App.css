@@ -176,6 +176,49 @@
   margin-top: auto;
   position: relative;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.devreign-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: var(--spring);
+}
+
+.devreign-credit:hover {
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.devreign-logo {
+  font-size: 16px;
+  font-weight: 400;
+  display: inline-block;
+  animation: pulseGlowIntegral 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlowIntegral {
+  0%, 100% {
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+    transform: scale(1) translateY(0px);
+    color: rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.4);
+    transform: scale(1.1) translateY(-1px);
+    color: #ffffff;
+  }
 }
 
 .bottom-marquee {

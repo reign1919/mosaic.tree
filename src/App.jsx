@@ -57,6 +57,15 @@ export default function App() {
 
         <main className="linktree-container">
           <div className="brand-section">
+            <a 
+              href="https://www.instagram.com/forgd.reign/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="devreign-credit"
+            >
+              <span className="devreign-logo">∫</span>
+              <span className="devreign-text">DEVREIGN</span>
+            </a>
             <div className="logo-wrapper">
               <img src="/logo.png" alt="The Mosaic Foundation Logo" className="brand-logo" />
             </div>
@@ -117,7 +126,9 @@ export default function App() {
 
 
         <footer className="footer-simple">
-          &copy; {new Date().getFullYear()} The Mosaic Foundation
+          <div className="copyright-text">
+            &copy; {new Date().getFullYear()} The Mosaic Foundation
+          </div>
         </footer>
       </div>
     </>

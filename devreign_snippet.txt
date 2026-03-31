@@ -1,0 +1,54 @@
+<!-- DEVREIGN Credit Snippet -->
+
+<!-- 1. HTML/JSX Integration -->
+<!-- Place this anchor tag wherever you want the DEVREIGN credit to appear -->
+<a 
+  href="https://www.instagram.com/forgd.reign/" 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  className="devreign-credit"
+>
+  <span className="devreign-logo">∫</span>
+  <span className="devreign-text">DEVREIGN</span>
+</a>
+
+/* 2. CSS Styling */
+/* Add these styles to your main CSS file (e.g., App.css or index.css) */
+.devreign-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Outfit', sans-serif; /* Fallback to sans-serif if Outfit is not loaded */
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.devreign-credit:hover {
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.devreign-logo {
+  font-size: 16px;
+  font-weight: 400;
+  display: inline-block;
+  animation: pulseGlowIntegral 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlowIntegral {
+  0%, 100% {
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+    transform: scale(1) translateY(0px);
+    color: rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.4);
+    transform: scale(1.1) translateY(-1px);
+    color: #ffffff;
+  }
+}
