@@ -53,19 +53,20 @@ export default function App() {
       </div>
 
       <div className="page-wrapper page-enter">
-
+        <div className="top-credit-wrapper">
+          <a 
+            href="https://www.instagram.com/forgd.reign/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="devreign-credit"
+          >
+            <span className="devreign-logo">∫</span>
+            <span className="devreign-text">DEVREIGN</span>
+          </a>
+        </div>
 
         <main className="linktree-container">
           <div className="brand-section">
-            <a 
-              href="https://www.instagram.com/forgd.reign/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="devreign-credit"
-            >
-              <span className="devreign-logo">∫</span>
-              <span className="devreign-text">DEVREIGN</span>
-            </a>
             <div className="logo-wrapper">
               <img src="/logo.png" alt="The Mosaic Foundation Logo" className="brand-logo" />
             </div>
